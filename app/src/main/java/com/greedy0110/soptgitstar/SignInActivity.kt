@@ -62,7 +62,7 @@ class SignInActivity : AppCompatActivity() {
             // 입력한 ID, 입력한 PW를 가지고 로그인 요청을 한다.
             val response = requestLogin(id, pw)
             if (response) {
-                // TODO 로그인이 성공했으면, 메인화면으로 넘어가야 한다.
+                val intent = Intent(this, FollowerListActivity::class.java)
 
                 startActivity(intent)
             }

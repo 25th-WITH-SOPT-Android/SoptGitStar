@@ -39,7 +39,8 @@ class SignUpActivity : AppCompatActivity() {
             val response = requestSignup(name, id, pw)
 
             if (response) {
-                // TODO 회원가입 성공했으면, 메인화면으로 넘어가야 한다.
+                // 회원가입에 성공하면 바로 follower list로 넘어가자
+                val intent = Intent(this, FollowerListActivity::class.java)
 
                 startActivity(intent)
             }
