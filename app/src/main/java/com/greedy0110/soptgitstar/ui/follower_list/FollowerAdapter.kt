@@ -1,11 +1,12 @@
-package com.greedy0110.soptgitstar
+package com.greedy0110.soptgitstar.ui.follower_list
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.greedy0110.soptgitstar.data.Follower
+import com.greedy0110.soptgitstar.R
+import com.greedy0110.soptgitstar.data.follower.Follower
 
 class FollowerAdapter(
     private val context: Context,

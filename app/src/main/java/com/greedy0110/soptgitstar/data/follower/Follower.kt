@@ -1,4 +1,4 @@
-package com.greedy0110.soptgitstar.data
+package com.greedy0110.soptgitstar.data.follower
 
 data class Follower(
     val avatarImageUrl: String,

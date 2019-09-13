@@ -1,4 +1,4 @@
-package com.greedy0110.soptgitstar
+package com.greedy0110.soptgitstar.ui.sign_in
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.greedy0110.soptgitstar.ui.follower_list.FollowerListActivity
+import com.greedy0110.soptgitstar.R
+import com.greedy0110.soptgitstar.ui.sign_up.SignUpActivity
 
 class SignInActivity : AppCompatActivity() {
 
@@ -63,6 +66,8 @@ class SignInActivity : AppCompatActivity() {
             val response = requestLogin(id, pw)
             if (response) {
                 val intent = Intent(this, FollowerListActivity::class.java)
+                // 로그인에 성공한 아이디를 넘겨주자.
+                intent.putExtra("login", id)
 
                 startActivity(intent)
             }

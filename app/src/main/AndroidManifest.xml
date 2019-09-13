@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FollowerListActivity"></activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignInActivity">
+        <activity android:name="com.greedy0110.soptgitstar.ui.follower_list.FollowerListActivity"></activity>
+        <activity android:name="com.greedy0110.soptgitstar.ui.sign_up.SignUpActivity" />
+        <activity android:name="com.greedy0110.soptgitstar.ui.sign_in.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
