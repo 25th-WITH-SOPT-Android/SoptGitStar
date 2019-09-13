@@ -12,10 +12,8 @@ import kotlinx.android.synthetic.main.activity_follower_list.*
 
 class FollowerListActivity : AppCompatActivity() {
     private lateinit var adapter: FollowerAdapter
-    private val userRepository: UserRepository =
-        DummyUserRepository()
-    private val followerRepository: FollowerRepository =
-        DummyFollowerRepository()
+    private val userRepository: UserRepository = DummyUserRepository()
+    private val followerRepository: FollowerRepository = DummyFollowerRepository()
     private var login: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
