@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:colorControlNormal">#c0c0c0</item>
+        <item name="android:colorControlActivated">#c0c0c0</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColorHint">#c0c0c0</item>
+    </style>
 </resources>
