@@ -1,4 +1,4 @@
-package com.greedy0110.soptgitstar.ui.git_repo_list
+package com.greedy0110.soptgitstar.feature.git_repo_list
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -43,7 +43,7 @@ class GitRepoListActivity : AppCompatActivity() {
     }
 
     private fun makeGitRepoListView() {
-        adapter = GitRepoAdapter(this, listOf())
+        adapter = GitRepoAdapter(this)
 
         recyclerViewGitRepoList.adapter = adapter
         recyclerViewGitRepoList.layoutManager = LinearLayoutManager(this)

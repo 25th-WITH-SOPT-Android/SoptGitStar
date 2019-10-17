@@ -1,19 +1,19 @@
-package com.greedy0110.soptgitstar.ui.follower_list
+package com.greedy0110.soptgitstar.feature.follower_list
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.greedy0110.soptgitstar.R
-import com.greedy0110.soptgitstar.data.follower.DummyFollowerRepository
 import com.greedy0110.soptgitstar.data.user.DummyUserRepository
-import com.greedy0110.soptgitstar.data.follower.FollowerRepository
 import com.greedy0110.soptgitstar.data.user.UserRepository
 import kotlinx.android.synthetic.main.activity_follower_list.*
 
 class FollowerListActivity : AppCompatActivity() {
     private lateinit var adapter: FollowerAdapter
+
     private val userRepository: UserRepository = DummyUserRepository()
-    private val followerRepository: FollowerRepository = DummyFollowerRepository()
+    private val followerRepository: UserRepository = DummyUserRepository()
+
     private var login: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,10 +23,6 @@ class FollowerListActivity : AppCompatActivity() {
         // 엘비스 연산자를 사용해서 null 반환이 없도록 변경했다.
         login = intent.getStringExtra("login")?:""
 
-        makeController()
-    }
-
-    private fun makeController() {
         makeProfile()
         makeFollowerListView()
     }
@@ -46,7 +42,7 @@ class FollowerListActivity : AppCompatActivity() {
     // 하단의 follower list view를 구현한다.
     private fun makeFollowerListView() {
         // adapter를 초기회 한다.
-        adapter = FollowerAdapter(this, listOf())
+        adapter = FollowerAdapter(this)
 
         // recyclerView와 어뎁터를 연결한다.
         recyclerViewFollowerList.adapter = adapter
