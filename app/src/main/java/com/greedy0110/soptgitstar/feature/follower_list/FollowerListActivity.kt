@@ -1,8 +1,12 @@
 package com.greedy0110.soptgitstar.feature.follower_list
 
+import android.graphics.Rect
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.TypedValue
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.greedy0110.soptgitstar.R
 import com.greedy0110.soptgitstar.data.user.DummyUserRepository
 import com.greedy0110.soptgitstar.data.user.UserRepository
@@ -33,10 +37,9 @@ class FollowerListActivity : AppCompatActivity() {
         val currentUser = userRepository.getUser(login)
 
         // 더미 데이터를 이용해 Profile을 채운다.
-        txtFollowerListLogin.text = currentUser.login
-        txtFollowerListName.text = currentUser.name
-        txtFollowerListBio.text = currentUser.bio
-        txtFollowerListFollowerCount.text = "followers : ${currentUser.followerCount}"
+        profile_login.text = currentUser.login
+        profile_name.text = currentUser.name
+        profile_description.text = currentUser.bio
     }
 
     // 하단의 follower list view를 구현한다.
@@ -45,10 +48,20 @@ class FollowerListActivity : AppCompatActivity() {
         adapter = FollowerAdapter(this)
 
         // recyclerView와 어뎁터를 연결한다.
-        recyclerViewFollowerList.adapter = adapter
+        follower_list.adapter = adapter
 
         // recyclerView 아이템이 어떤 layout으로 그려질지 선택한다.
-        recyclerViewFollowerList.layoutManager = LinearLayoutManager(this)
+        follower_list.layoutManager = LinearLayoutManager(this)
+        follower_list.addItemDecoration(object : RecyclerView.ItemDecoration() {
+            override fun getItemOffsets(
+                outRect: Rect,
+                view: View,
+                parent: RecyclerView,
+                state: RecyclerView.State
+            ) {
+                outRect.top = 15.dpToPx()
+            }
+        })
 
         // adapter에 데이터 갱신하기
         // 데이터의 소스는 repository가 관리한다.
@@ -56,4 +69,9 @@ class FollowerListActivity : AppCompatActivity() {
         // 데이터 갱신한 다음, 어뎁터에게 다시 그리라고 알려준다. (이거 안하면 변화가 갱신되지 않는다.)
         adapter.notifyDataSetChanged()
     }
+
+    private fun Int.dpToPx(): Int = TypedValue
+        .applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            this.toFloat(), resources.displayMetrics).toInt()
 }
