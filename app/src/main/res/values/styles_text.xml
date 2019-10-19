@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+디자인 시에 폰트가 하나로 통일되어 있으면 관리하기 편합니다. 지금은 Nanum Suqare B 하나만 정의되어 있다고 생각하고
+ (그런데 디자인상 regular 인 듯? 이런 부분들은 작업한 화면을 보고 디자이너와 얘기)
+폰트 및 디자인에 필요한 스타일을 만들어봤습니다.
+
+이렇게 하면 실제 사용시에 Text 속성을 하나 하나 설정하는 것이 아니고, style 만 지정해주면 되어 깔끔하게
+layout 파일 작성이 가능합니다.
+ -->
+<resources>
+    <style name="Text">
+        <item name="android:fontFamily">@font/nanum_square_r</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.23sp">
+        <item name="android:textSize">23sp</item>
+    </style>
+    
+    <style name="Text.23sp.27h">
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <style name="Text.23sp.27h.LightPink">
+        <item name="android:textColor">@color/light_pink</item>
+    </style>
+
+    <style name="Text.14sp">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text.14sp.16h">
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+    
+    <style name="Text.14sp.16h.BrownishGrey">
+        <item name="android:textColor">@color/brownish_grey</item>
+    </style>
+
+    <style name="Text.10sp">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="Text.10sp.12h">
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
+    <style name="Text.10sp.12h.BrownishGrey">
+        <item name="android:textColor">@color/brownish_grey</item>
+    </style>
+
+    <style name="Text.13sp">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="Text.13sp.14h">
+        <item name="android:lineSpacingExtra">1sp</item>
+    </style>
+
+    <style name="Text.13sp.14h.BrownishGrey">
+        <item name="android:textColor">@color/brownish_grey</item>
+    </style>
+
+</resources>

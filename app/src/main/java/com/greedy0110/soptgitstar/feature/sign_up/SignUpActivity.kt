@@ -1,10 +1,10 @@
-package com.greedy0110.soptgitstar.ui.sign_up
+package com.greedy0110.soptgitstar.feature.sign_up
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.greedy0110.soptgitstar.ui.follower_list.FollowerListActivity
+import com.greedy0110.soptgitstar.feature.follower_list.FollowerListActivity
 import com.greedy0110.soptgitstar.R
 import kotlinx.android.synthetic.main.activity_sign_up.*
 

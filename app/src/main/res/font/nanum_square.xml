@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+font-family 에 대한 더 깊은 이해 https://developer.android.com/guide/topics/resources/font-resource
+그런데 낮은 sdk 에서는 돌지 않는 문제가 있네... 해결책 아시는 분은 알려주세요
+-->
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <font
+        android:font="@font/ns_regular"
+        android:fontStyle="normal"
+        android:fontWeight="400" />
+
+    <font
+        android:font="@font/ns_light"
+        android:fontStyle="italic"
+        android:fontWeight="200" />
+
+    <font
+        android:font="@font/ns_bold"
+        android:fontStyle="normal"
+        android:fontWeight="600" />
+
+    <font
+        android:font="@font/ns_extra_bold"
+        android:fontStyle="normal"
+        android:fontWeight="800" />
+</font-family>

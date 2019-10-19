@@ -1,4 +1,4 @@
-package com.greedy0110.soptgitstar.ui.sign_in
+package com.greedy0110.soptgitstar.feature.sign_in
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,17 +7,18 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
-import com.greedy0110.soptgitstar.ui.follower_list.FollowerListActivity
+import com.greedy0110.soptgitstar.feature.follower_list.FollowerListActivity
 import com.greedy0110.soptgitstar.R
-import com.greedy0110.soptgitstar.ui.sign_up.SignUpActivity
+import com.greedy0110.soptgitstar.feature.sign_up.SignUpActivity
 
 class SignInActivity : AppCompatActivity() {
 
     private var edtSignInId: EditText? = null
     private var edtSignInPw: EditText? = null
-    private var btnSignInSignUp: Button? = null
-    private var btnSignInSignIn: Button? = null
+    private var btnSignInSignUp: TextView? = null
+    private var btnSignInSignIn: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

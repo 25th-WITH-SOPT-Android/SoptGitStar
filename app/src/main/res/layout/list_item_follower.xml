@@ -1,32 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/containerListItemFollower"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/black">
 
-    <ImageView
-        android:id="@+id/imgListItemFollowerAvatar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/dummy_avatar"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/txtListItemFollowerLogin"
-        android:layout_width="wrap_content"
+        android:id="@+id/profile_login"
+        style="@style/Text.10sp.12h.BrownishGrey"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="greedy0110"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/profile_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="greedy0110" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        style="@style/Text.23sp.27h.LightPink"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgListItemFollowerAvatar"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/profile_login"
+        app:layout_constraintTop_toBottomOf="@id/profile_login"
+        tools:text="Seungmin Shin" />
 </androidx.constraintlayout.widget.ConstraintLayout>
