@@ -1,47 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/containerListItemGitRepo"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    
-    <ImageView
-        android:id="@+id/imgListItemGitRepoOwner"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/dummy_avatar"
-        />
+    android:background="@color/black">
 
     <TextView
-        android:id="@+id/txtListItemGitRepoName"
+        android:id="@+id/title"
+        style="@style/Text.23sp.27h.LightPink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Activity1Fragment"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@id/imgListItemGitRepoOwner"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="26dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="14sp"
-        android:textColor="#000000"
-        />
+        tools:text="SoptStagram" />
 
     <TextView
-        android:id="@+id/txtListItemGitRepoDesc"
+        android:id="@+id/updated"
+        style="@style/Text.10sp.12h.BrownishGrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Updated on 16 Aug" />
+
+    <TextView
+        android:id="@+id/description"
+        style="@style/Text.14sp.16h.BrownishGrey"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="Activity 와 Fragment 사이 데이터 교환을 위해 ViewModel + LiveData 를 사용한 기본적인 구현"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
-        app:layout_constraintStart_toStartOf="@id/txtListItemGitRepoName"
-        app:layout_constraintTop_toBottomOf="@id/txtListItemGitRepoName"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="11sp"
-        android:textColor="#000000"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:text="IT 창업 동아리 SOPT 안드로이드 교육 프로젝트" />
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/language_color"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        tools:src="#f84f51" />
+
+    <TextView
+        android:id="@+id/language"
+        style="@style/Text.13sp.14h.BrownishGrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        app:layout_constraintBottom_toBottomOf="@id/language_color"
+        app:layout_constraintStart_toEndOf="@id/language_color"
+        app:layout_constraintTop_toTopOf="@id/language_color"
+        tools:text="Kotlin" />
+
+    <ImageView
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
