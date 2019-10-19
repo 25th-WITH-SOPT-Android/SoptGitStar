@@ -11,5 +11,5 @@ interface UserRepository {
     /**
      * login 에 해당하는 유저를 팔로우하는 유저 리스트를 받아온다.
      * */
-    fun getFollowers(login: String): Call<GetFollowersData>
+    fun getFollowers(login: String): Call<List<GetFollowerData>>
 }

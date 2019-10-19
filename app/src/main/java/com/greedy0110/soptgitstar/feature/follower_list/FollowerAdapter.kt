@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.greedy0110.soptgitstar.R
-import com.greedy0110.soptgitstar.data.user.FollowerData
+import com.greedy0110.soptgitstar.data.user.GetFollowerData
 
 class FollowerAdapter(
     private val context: Context
 ) : RecyclerView.Adapter<FollowerViewHolder>() {
-    var data: List<FollowerData> = listOf()
+    var data: List<GetFollowerData> = listOf()
 
     // 우리가 정의한 ViewHolder를 실제로 만들어주는 것 (activity의 onCreate, setContentView와 비슷한 느낌)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerViewHolder {

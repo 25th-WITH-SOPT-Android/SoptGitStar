@@ -9,14 +9,8 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.greedy0110.soptgitstar.R
-import com.greedy0110.soptgitstar.data.git_repo.DummyGitRepoRepository
-import com.greedy0110.soptgitstar.data.git_repo.GetGitRepoData
-import com.greedy0110.soptgitstar.data.git_repo.GitRepo
-import com.greedy0110.soptgitstar.data.git_repo.GitRepoRepository
-import com.greedy0110.soptgitstar.data.user.DummyUserRepository
-import com.greedy0110.soptgitstar.data.user.GetUserData
-import com.greedy0110.soptgitstar.data.user.User
-import com.greedy0110.soptgitstar.data.user.UserRepository
+import com.greedy0110.soptgitstar.data.git_repo.*
+import com.greedy0110.soptgitstar.data.user.*
 import kotlinx.android.synthetic.main.activity_git_repo_list.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,8 +18,8 @@ import retrofit2.Response
 
 class GitRepoListActivity : AppCompatActivity() {
     private lateinit var adapter: GitRepoAdapter
-    private val userRepository: UserRepository = DummyUserRepository()
-    private val gitRepoRepository: GitRepoRepository = DummyGitRepoRepository()
+    private val userRepository: UserRepository = ServerUserRepository()
+    private val gitRepoRepository: GitRepoRepository = ServerGitRepoRepository()
     private var login: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +28,7 @@ class GitRepoListActivity : AppCompatActivity() {
 
         // 엘비스 연산자를 사용해서 null 반환이 없도록 변경했다.
         login = intent.getStringExtra("follower_name")?:""
+        Log.d("sopt_git_star", "get repos $login")
 
         makeController()
     }

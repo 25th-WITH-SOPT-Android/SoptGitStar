@@ -16,42 +16,40 @@ class DummyUserRepository : UserRepository {
         )
     }
 
-    override fun getFollowers(login: String): Call<GetFollowersData> {
+    override fun getFollowers(login: String): Call<List<GetFollowerData>> {
         return Calls.response(
-            GetFollowersData(
-                listOf(
-                    FollowerData(
-                        avatarUrl = "",
-                        login = "greedy0110"
-                    ),
-                    FollowerData(
-                        avatarUrl = "",
-                        login = "greedy0111"
-                    ),
-                    FollowerData(
-                        avatarUrl = "",
-                        login = "greedy0112"
-                    ),
-                    FollowerData(
-                        avatarUrl = "",
-                        login = "greedy0113"
-                    ),
-                    FollowerData(
-                        avatarUrl = "",
-                        login = "greedy0114"
-                    ),
-                    FollowerData(
-                        avatarUrl = "",
-                        login = "greedy0115"
-                    ),
-                    FollowerData(
-                        avatarUrl = "",
-                        login = "greedy0116"
-                    ),
-                    FollowerData(
-                        avatarUrl = "",
-                        login = "greedy0110"
-                    )
+            listOf(
+                GetFollowerData(
+                    avatarUrl = "",
+                    login = "greedy0110"
+                ),
+                GetFollowerData(
+                    avatarUrl = "",
+                    login = "greedy0111"
+                ),
+                GetFollowerData(
+                    avatarUrl = "",
+                    login = "greedy0112"
+                ),
+                GetFollowerData(
+                    avatarUrl = "",
+                    login = "greedy0113"
+                ),
+                GetFollowerData(
+                    avatarUrl = "",
+                    login = "greedy0114"
+                ),
+                GetFollowerData(
+                    avatarUrl = "",
+                    login = "greedy0115"
+                ),
+                GetFollowerData(
+                    avatarUrl = "",
+                    login = "greedy0116"
+                ),
+                GetFollowerData(
+                    avatarUrl = "",
+                    login = "greedy0110"
                 )
             )
         )

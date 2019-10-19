@@ -18,8 +18,7 @@ import retrofit2.Response
 class FollowerListActivity : AppCompatActivity() {
     private lateinit var adapter: FollowerAdapter
 
-    private val userRepository: UserRepository = DummyUserRepository()
-    private val followerRepository: UserRepository = DummyUserRepository()
+    private val userRepository: UserRepository = ServerUserRepository()
 
     private var login: String = ""
 
@@ -29,6 +28,7 @@ class FollowerListActivity : AppCompatActivity() {
 
         // 엘비스 연산자를 사용해서 null 반환이 없도록 변경했다.
         login = intent.getStringExtra("login")?:""
+        Log.d("sopt_git_star", "$login 's followers")
 
         makeProfile()
         makeFollowerListView()
@@ -46,9 +46,11 @@ class FollowerListActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<GetUserData>, response: Response<GetUserData>) {
                 //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
+                Log.d("sopt_git_star", "get user info success ${response.isSuccessful}")
                 if (response.isSuccessful) {
                     val currentUser = response.body()!! // TODO 여기서 body 가 없다면, 어플리케이션이 죽을 것이다 어떻게 해야할까?
 
+                    Log.d("sopt_git_star", "get user info $currentUser")
                     // 더미 데이터를 이용해 Profile을 채운다.
                     profile_login.text = currentUser.login
                     profile_name.text = currentUser.name
@@ -81,16 +83,16 @@ class FollowerListActivity : AppCompatActivity() {
 
         // 현재 사용자 정보를 비동기적으로 받아온다.
         // Callback 내부의 코드는 나중에 데이터를 받아오고 실행된다.
-        followerRepository.getFollowers(login).enqueue(object : Callback<GetFollowersData> {
-            override fun onFailure(call: Call<GetFollowersData>, t: Throwable) {
+        userRepository.getFollowers(login).enqueue(object : Callback<List<GetFollowerData>> {
+            override fun onFailure(call: Call<List<GetFollowerData>>, t: Throwable) {
                 //네트워크 통신에 실패했을 때
                 Log.e("sopt_git_star", "error : $t")
             }
 
-            override fun onResponse(call: Call<GetFollowersData>, response: Response<GetFollowersData>) {
+            override fun onResponse(call: Call<List<GetFollowerData>>, response: Response<List<GetFollowerData>>) {
                 //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
                 if (response.isSuccessful) {
-                    val followers = response.body()!!.follwers!! // TODO 여기서 body 가 없다면, 어플리케이션이 죽을 것이다 어떻게 해야할까?
+                    val followers = response.body()!! // TODO 여기서 body 가 없다면, 어플리케이션이 죽을 것이다 어떻게 해야할까?
 
                     // adapter에 데이터 갱신하기
                     // 데이터의 소스는 repository가 관리한다.
