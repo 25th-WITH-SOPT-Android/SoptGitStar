@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/greyish_brown"
     tools:context=".feature.follower_list.FollowerListActivity">
 
     <!-- Toolbar 처럼 사용할 것이다. -->
