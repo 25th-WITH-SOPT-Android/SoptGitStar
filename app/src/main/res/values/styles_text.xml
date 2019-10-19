@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-디자인 시에 폰트가 하나로 통일되어 있으면 관리하기 편합니다. 지금은 Nanum Suqare 하나만 정의되어 있다고 생각하고
+디자인 시에 폰트가 하나로 통일되어 있으면 관리하기 편합니다. 지금은 Nanum Suqare B 하나만 정의되어 있다고 생각하고
 폰트 및 디자인에 필요한 스타일을 만들어봤습니다.
 
 이렇게 하면 실제 사용시에 Text 속성을 하나 하나 설정하는 것이 아니고, style 만 지정해주면 되어 깔끔하게
@@ -8,7 +8,7 @@ layout 파일 작성이 가능합니다.
  -->
 <resources>
     <style name="Text">
-        <item name="android:fontFamily">@font/nanum_square</item>
+        <item name="android:fontFamily">@font/nanum_square_b</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
@@ -19,7 +19,7 @@ layout 파일 작성이 가능합니다.
     <style name="Text.23sp.27h">
         <item name="android:lineSpacingExtra">4sp</item>
     </style>
-    
+
     <style name="Text.23sp.27h.LightPink">
         <item name="android:textColor">@color/light_pink</item>
     </style>
