@@ -5,13 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.greedy0110.soptgitstar.R
+import com.greedy0110.soptgitstar.data.git_repo.GetGitRepoData
 import com.greedy0110.soptgitstar.data.git_repo.GitRepo
 
 class GitRepoAdapter(
     private val context: Context
 ) : RecyclerView.Adapter<GitRepoViewHolder>() {
 
-    var data: List<GitRepo> = listOf()
+    var data: List<GetGitRepoData> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GitRepoViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.list_item_git_repo, parent, false)

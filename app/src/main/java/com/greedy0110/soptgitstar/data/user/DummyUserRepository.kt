@@ -4,69 +4,54 @@ import retrofit2.Call
 import retrofit2.mock.Calls
 
 class DummyUserRepository : UserRepository {
-    override fun getUser(login: String): Call<User> {
+    override fun getUser(login: String): Call<GetUserData> {
         return Calls.response(
-            User(
-                avatarImageUrl = "",
+            GetUserData(
+                avatarUrl = "",
                 login = "greedy0110",
                 name = "seungmin shin",
                 bio = "developer, interested in Android (Kotlin) & Machine learning",
-                followerCount = 23
+                numOfFollowers = 23
             )
         )
     }
 
-    override fun getFollowers(login: String): Call<List<User>> {
+    override fun getFollowers(login: String): Call<GetFollowersData> {
         return Calls.response(
-            listOf(
-                User(
-                    avatarImageUrl = "",
-                    login = "greedy0110",
-                    name = "seungmin shin",
-                    bio = "developer, interested in Android (Kotlin) & Machine learning",
-                    followerCount = 23
-                ),
-                User(
-                    avatarImageUrl = "",
-                    login = "greedy0111",
-                    name = "seungmin shin",
-                    bio = "developer, interested in Android (Kotlin) & Machine learning",
-                    followerCount = 23
-                ),
-                User(
-                    avatarImageUrl = "",
-                    login = "greedy0112",
-                    name = "seungmin shin",
-                    bio = "developer, interested in Android (Kotlin) & Machine learning",
-                    followerCount = 23
-                ),
-                User(
-                    avatarImageUrl = "",
-                    login = "greedy0113",
-                    name = "seungmin shin",
-                    bio = "developer, interested in Android (Kotlin) & Machine learning",
-                    followerCount = 23
-                ),
-                User(
-                    avatarImageUrl = "",
-                    login = "greedy0114",
-                    name = "seungmin shin",
-                    bio = "developer, interested in Android (Kotlin) & Machine learning",
-                    followerCount = 23
-                ),
-                User(
-                    avatarImageUrl = "",
-                    login = "greedy0115",
-                    name = "seungmin shin",
-                    bio = "developer, interested in Android (Kotlin) & Machine learning",
-                    followerCount = 23
-                ),
-                User(
-                    avatarImageUrl = "",
-                    login = "greedy0116",
-                    name = "seungmin shin",
-                    bio = "developer, interested in Android (Kotlin) & Machine learning",
-                    followerCount = 23
+            GetFollowersData(
+                listOf(
+                    FollowerData(
+                        avatarUrl = "",
+                        login = "greedy0110"
+                    ),
+                    FollowerData(
+                        avatarUrl = "",
+                        login = "greedy0111"
+                    ),
+                    FollowerData(
+                        avatarUrl = "",
+                        login = "greedy0112"
+                    ),
+                    FollowerData(
+                        avatarUrl = "",
+                        login = "greedy0113"
+                    ),
+                    FollowerData(
+                        avatarUrl = "",
+                        login = "greedy0114"
+                    ),
+                    FollowerData(
+                        avatarUrl = "",
+                        login = "greedy0115"
+                    ),
+                    FollowerData(
+                        avatarUrl = "",
+                        login = "greedy0116"
+                    ),
+                    FollowerData(
+                        avatarUrl = "",
+                        login = "greedy0110"
+                    )
                 )
             )
         )

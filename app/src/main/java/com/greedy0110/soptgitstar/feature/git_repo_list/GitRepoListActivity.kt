@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.greedy0110.soptgitstar.R
 import com.greedy0110.soptgitstar.data.git_repo.DummyGitRepoRepository
+import com.greedy0110.soptgitstar.data.git_repo.GetGitRepoData
 import com.greedy0110.soptgitstar.data.git_repo.GitRepo
 import com.greedy0110.soptgitstar.data.git_repo.GitRepoRepository
 import com.greedy0110.soptgitstar.data.user.DummyUserRepository
+import com.greedy0110.soptgitstar.data.user.GetUserData
 import com.greedy0110.soptgitstar.data.user.User
 import com.greedy0110.soptgitstar.data.user.UserRepository
 import kotlinx.android.synthetic.main.activity_git_repo_list.*
@@ -44,13 +46,13 @@ class GitRepoListActivity : AppCompatActivity() {
     private fun makeProfile() {
         // 현재 사용자 정보를 비동기적으로 받아온다.
         // Callback 내부의 코드는 나중에 데이터를 받아오고 실행된다.
-        userRepository.getUser(login).enqueue(object : Callback<User> {
-            override fun onFailure(call: Call<User>, t: Throwable) {
+        userRepository.getUser(login).enqueue(object : Callback<GetUserData> {
+            override fun onFailure(call: Call<GetUserData>, t: Throwable) {
                 //네트워크 통신에 실패했을 때
                 Log.e("sopt_git_star", "error : $t")
             }
 
-            override fun onResponse(call: Call<User>, response: Response<User>) {
+            override fun onResponse(call: Call<GetUserData>, response: Response<GetUserData>) {
                 //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
                 if (response.isSuccessful) {
                     val currentUser = response.body()!! // TODO 여기서 body 가 없다면, 어플리케이션이 죽을 것이다 어떻게 해야할까?
@@ -84,13 +86,13 @@ class GitRepoListActivity : AppCompatActivity() {
 
         // 지정한 사용자의 팔로워 정보를 비동기적으로 받아온다.
         // Callback 내부의 코드는 나중에 데이터를 받아오고 실행된다.
-        gitRepoRepository.getRepos(login).enqueue(object : Callback<List<GitRepo>> {
-            override fun onFailure(call: Call<List<GitRepo>>, t: Throwable) {
+        gitRepoRepository.getRepos(login).enqueue(object : Callback<List<GetGitRepoData>> {
+            override fun onFailure(call: Call<List<GetGitRepoData>>, t: Throwable) {
                 //네트워크 통신에 실패했을 때
                 Log.e("sopt_git_star", "error : $t")
             }
 
-            override fun onResponse(call: Call<List<GitRepo>>, response: Response<List<GitRepo>>) {
+            override fun onResponse(call: Call<List<GetGitRepoData>>, response: Response<List<GetGitRepoData>>) {
                 //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
                 if (response.isSuccessful) {
                     val gitRepos = response.body()!! // TODO 여기서 body 가 없다면, 어플리케이션이 죽을 것이다 어떻게 해야할까?
