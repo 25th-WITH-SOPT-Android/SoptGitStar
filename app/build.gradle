@@ -47,4 +47,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     //Retrofit 에서 Gson 을 사용하기 위한 라이브러리
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+
+    //이미지 로드를 위해 glide 라이브러리 : https://github.com/bumptech/glide
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 }

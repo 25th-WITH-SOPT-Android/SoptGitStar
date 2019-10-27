@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.greedy0110.soptgitstar.R
 import com.greedy0110.soptgitstar.data.user.GetUserData
 import com.greedy0110.soptgitstar.data.user.ServerUserRepository
@@ -44,36 +45,6 @@ class UserProfileFragment : Fragment() {
     ): View? {
         // 우리가 이 Fragment 를 위해 작성한 layout file 을 inflate 시키는 코드입니다.
         val view: View = inflater.inflate(R.layout.fragment_user_profile, container, false)
-
-        txtLogin = view.findViewById(R.id.profile_login)
-        txtName = view.findViewById(R.id.profile_name)
-        txtDescription = view.findViewById(R.id.profile_description)
-        imgAvatar = view.findViewById(R.id.profile_image)
-
-        login?.let { login ->
-            userRepository.getUser(login).enqueue(object : Callback<GetUserData> {
-                override fun onFailure(call: Call<GetUserData>, t: Throwable) {
-                    //네트워크 통신에 실패했을 때
-                    Log.e("sopt_git_star", "error : $t")
-                }
-
-                override fun onResponse(call: Call<GetUserData>, response: Response<GetUserData>) {
-                    //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
-                    if (response.isSuccessful) {
-                        val currentUser =
-                            response.body()!! // TODO 여기서 body 가 없다면, 어플리케이션이 죽을 것이다 어떻게 해야할까?
-
-                        Log.d("sopt_git_star", "user info : $currentUser")
-
-                        // 더미 데이터를 이용해 Profile을 채운다.
-                        txtLogin.text = currentUser.login
-                        txtName.text = currentUser.name
-                        txtDescription.text = currentUser.bio
-                    }
-                }
-            })
-        }
-
         return view
     }
 
@@ -82,6 +53,46 @@ class UserProfileFragment : Fragment() {
     // 그 전에는 activity 가 접근해도 이상한 행동을 하게 될거에요.
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        view?.let { view ->
+            txtLogin = view.findViewById(R.id.profile_login)
+            txtName = view.findViewById(R.id.profile_name)
+            txtDescription = view.findViewById(R.id.profile_description)
+            imgAvatar = view.findViewById(R.id.profile_image)
+
+            login?.let { login ->
+                userRepository.getUser(login).enqueue(object : Callback<GetUserData> {
+                    override fun onFailure(call: Call<GetUserData>, t: Throwable) {
+                        //네트워크 통신에 실패했을 때
+                        Log.e("sopt_git_star", "error : $t")
+                    }
+
+                    override fun onResponse(
+                        call: Call<GetUserData>,
+                        response: Response<GetUserData>
+                    ) {
+                        //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
+                        if (response.isSuccessful) {
+                            val currentUser =
+                                response.body()!! // TODO 여기서 body 가 없다면, 어플리케이션이 죽을 것이다 어떻게 해야할까?
+
+                            Log.d("sopt_git_star", "user info : $currentUser")
+
+                            // 더미 데이터를 이용해 Profile을 채운다.
+                            txtLogin.text = currentUser.login
+                            txtName.text = currentUser.name
+                            txtDescription.text = currentUser.bio
+
+                            // Glide 라이브러리를 이용해 이미지 로드
+                            Glide
+                                .with(this@UserProfileFragment)
+                                .load(currentUser.avatarUrl)
+                                .into(imgAvatar)
+                        }
+                    }
+                })
+            }
+        }
     }
 
 
