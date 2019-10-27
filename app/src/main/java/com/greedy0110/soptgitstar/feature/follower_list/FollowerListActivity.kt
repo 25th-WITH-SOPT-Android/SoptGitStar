@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.greedy0110.soptgitstar.R
 import com.greedy0110.soptgitstar.data.user.*
+import com.greedy0110.soptgitstar.feature.user_profile.UserProfileFragment
 import kotlinx.android.synthetic.main.activity_follower_list.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,28 +37,12 @@ class FollowerListActivity : AppCompatActivity() {
 
     // 상단에 profile 정보를 그려준다.
     private fun makeProfile() {
-        // 현재 사용자 정보를 비동기적으로 받아온다.
-        // Callback 내부의 코드는 나중에 데이터를 받아오고 실행된다.
-        userRepository.getUser(login).enqueue(object : Callback<GetUserData> {
-            override fun onFailure(call: Call<GetUserData>, t: Throwable) {
-                //네트워크 통신에 실패했을 때
-                Log.e("sopt_git_star", "error : $t")
-            }
+        val profileFragment = UserProfileFragment.newInstance(login)
 
-            override fun onResponse(call: Call<GetUserData>, response: Response<GetUserData>) {
-                //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
-                Log.d("sopt_git_star", "get user info success ${response.isSuccessful}")
-                if (response.isSuccessful) {
-                    val currentUser = response.body()!! // TODO 여기서 body 가 없다면, 어플리케이션이 죽을 것이다 어떻게 해야할까?
-
-                    Log.d("sopt_git_star", "get user info $currentUser")
-                    // 더미 데이터를 이용해 Profile을 채운다.
-                    profile_login.text = currentUser.login
-                    profile_name.text = currentUser.name
-                    profile_description.text = currentUser.bio
-                }
-            }
-        })
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction
+            .replace(R.id.profile_container, profileFragment)
+            .commit()
     }
 
     // 하단의 follower list view를 구현한다.
