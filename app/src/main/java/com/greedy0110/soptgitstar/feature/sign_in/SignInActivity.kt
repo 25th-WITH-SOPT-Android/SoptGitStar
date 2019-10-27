@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.greedy0110.soptgitstar.feature.follower_list.FollowerListActivity
 import com.greedy0110.soptgitstar.R
+import com.greedy0110.soptgitstar.data.login.Login
 import com.greedy0110.soptgitstar.feature.sign_up.SignUpActivity
 
 class SignInActivity : AppCompatActivity() {
@@ -24,6 +25,13 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // 레이아웃 파일을 메모리로 로드한다.
         setContentView(R.layout.activity_sing_in)
+
+        // 이미 로그인이 되어있다면?
+        val id = Login.getUser(this)
+        if (id.isNotEmpty()) {
+            goToFollowerListActivity(id)
+            finish()
+        }
 
         // logcat에서 확인 가능한 로그
         Log.d("with sopt", "sign in activity is created")
@@ -66,11 +74,9 @@ class SignInActivity : AppCompatActivity() {
             // 입력한 ID, 입력한 PW를 가지고 로그인 요청을 한다.
             val response = requestLogin(id, pw)
             if (response) {
-                val intent = Intent(this, FollowerListActivity::class.java)
-                // 로그인에 성공한 아이디를 넘겨주자.
-                intent.putExtra("login", id)
-
-                startActivity(intent)
+                // 로그인에 성공했으면, 로그인 아이디를 저장한다.
+                Login.setUser(this, id)
+                goToFollowerListActivity(id)
             }
             else {
                 // 로그인이 실패했으면 Toast를 사용해 로그인이 실패했다고 알려주고 아이디 혹은 비밀번호를 다시 입력하게 포커스를 이동시켜주자.
@@ -82,5 +88,13 @@ class SignInActivity : AppCompatActivity() {
 
     private fun requestLogin(id: String, pw: String): Boolean {
         return true
+    }
+
+    private fun goToFollowerListActivity(id: String) {
+        val intent = Intent(this, FollowerListActivity::class.java)
+        // 로그인에 성공한 아이디를 넘겨주자.
+        intent.putExtra("login", id)
+
+        startActivity(intent)
     }
 }

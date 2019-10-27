@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.greedy0110.soptgitstar.feature.follower_list.FollowerListActivity
 import com.greedy0110.soptgitstar.R
+import com.greedy0110.soptgitstar.data.login.Login
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity() {
@@ -41,6 +42,9 @@ class SignUpActivity : AppCompatActivity() {
             val response = requestSignup(name, id, pw)
 
             if (response) {
+                // 회원가입에 성공하는 경우에도, 아이디를 저장합시다!
+                Login.setUser(this, id)
+
                 // 회원가입에 성공하면 바로 follower list로 넘어가자
                 val intent = Intent(this, FollowerListActivity::class.java)
                 // 회원가입에 성공한 아이디를 넘겨주자.
