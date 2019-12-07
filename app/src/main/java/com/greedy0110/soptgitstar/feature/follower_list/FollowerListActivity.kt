@@ -36,6 +36,7 @@ class FollowerListActivity : AppCompatActivity() {
 
     // 상단에 profile 정보를 그려준다.
     private fun makeProfile() {
+        // 히히히히
         // 현재 사용자 정보를 비동기적으로 받아온다.
         // Callback 내부의 코드는 나중에 데이터를 받아오고 실행된다.
         userRepository.getUser(login).enqueue(object : Callback<GetUserData> {
